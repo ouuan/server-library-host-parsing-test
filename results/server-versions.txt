@@ -1,0 +1,24 @@
+Node
+v20.4.0
+
+Python
+Python 3.11.3
+
+Django
+4.2.3
+
+Rust
+cargo 1.71.0
+
+Go
+go version go1.20.6 linux/amd64
+
+Ruby
+ruby 3.0.5p211 (2022-11-24 revision ba5cf0f7c5) [x86_64-linux]
+sinatra (3.0.6)
+webrick (1.8.1)
+
+PHP
+PHP 8.2.8 (cli) (built: Jul  5 2023 18:47:24) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.2.8, Copyright (c) Zend Technologies

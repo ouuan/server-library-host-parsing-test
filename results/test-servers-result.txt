@@ -1,0 +1,801 @@
+-------------------------- Normal [Node http] --------------------------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+10
+[127.0.0.1:3000]
+0
+
+
+------------------------------------------------------------------------
+
+---------------------- No Host header [Node http] ----------------------
+HTTP/1.1 400 Bad Request
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+0
+
+
+------------------------------------------------------------------------
+
+------------------ Multiple Host headers [Node http] -------------------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+b
+[first.com]
+0
+
+
+------------------------------------------------------------------------
+
+----------- Space-preceded Host as first header [Node http] ------------
+HTTP/1.1 400 Bad Request
+Connection: close
+
+
+------------------------------------------------------------------------
+
+------ Space-preceded Host header after another Host [Node http] -------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+32
+[first.com Host: space-preceded-after-another.com]
+0
+
+
+------------------------------------------------------------------------
+
+------ Non-first space-preceded the only Host header [Node http] -------
+HTTP/1.1 400 Bad Request
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+0
+
+
+------------------------------------------------------------------------
+
+-------------- Space-after-colon Host header [Node http] ---------------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+17
+[space-after-colon.com]
+0
+
+
+------------------------------------------------------------------------
+
+--------------- Space-succeeded Host header [Node http] ----------------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+15
+[space-succeeded.com]
+0
+
+
+------------------------------------------------------------------------
+
+-------------------- Empty Host header [Node http] ---------------------
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Transfer-Encoding: chunked
+
+2
+[]
+0
+
+
+------------------------------------------------------------------------
+
+----------- Empty Host header with line-folding [Node http] ------------
+HTTP/1.1 400 Bad Request
+Connection: close
+
+
+------------------------------------------------------------------------
+
+--------------------- Normal [Python http.server] ----------------------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[127.0.0.1:3001]
+------------------------------------------------------------------------
+
+----------------- No Host header [Python http.server] ------------------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[undefined]
+------------------------------------------------------------------------
+
+-------------- Multiple Host headers [Python http.server] --------------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[first.com]
+------------------------------------------------------------------------
+
+------- Space-preceded Host as first header [Python http.server] -------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[undefined]
+------------------------------------------------------------------------
+
+-- Space-preceded Host header after another Host [Python http.server] --
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[first.com
+ Host: space-preceded-after-another.com]
+------------------------------------------------------------------------
+
+-- Non-first space-preceded the only Host header [Python http.server] --
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[undefined]
+------------------------------------------------------------------------
+
+---------- Space-after-colon Host header [Python http.server] ----------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+----------- Space-succeeded Host header [Python http.server] -----------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[space-succeeded.com ]
+------------------------------------------------------------------------
+
+---------------- Empty Host header [Python http.server] ----------------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[]
+------------------------------------------------------------------------
+
+------- Empty Host header with line-folding [Python http.server] -------
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.11.3
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-type: text/plain
+
+[
+ ]
+------------------------------------------------------------------------
+
+--------------------------- Normal [Django] ----------------------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[127.0.0.1:3002]
+------------------------------------------------------------------------
+
+----------------------- No Host header [Django] ------------------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[localhost:3002]
+------------------------------------------------------------------------
+
+-------------------- Multiple Host headers [Django] --------------------
+HTTP/1.1 400 Bad Request
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/html; charset=utf-8
+Connection: close
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bad Request (400)</title>
+</head>
+<body>
+  <h1>Bad Request (400)</h1><p></p>
+</body>
+</html>
+
+------------------------------------------------------------------------
+
+------------- Space-preceded Host as first header [Django] -------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[localhost:3002]
+------------------------------------------------------------------------
+
+-------- Space-preceded Host header after another Host [Django] --------
+HTTP/1.1 400 Bad Request
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/html; charset=utf-8
+Connection: close
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bad Request (400)</title>
+</head>
+<body>
+  <h1>Bad Request (400)</h1><p></p>
+</body>
+</html>
+
+------------------------------------------------------------------------
+
+-------- Non-first space-preceded the only Host header [Django] --------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[localhost:3002]
+------------------------------------------------------------------------
+
+---------------- Space-after-colon Host header [Django] ----------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+----------------- Space-succeeded Host header [Django] -----------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/plain
+Connection: close
+
+[space-succeeded.com]
+------------------------------------------------------------------------
+
+---------------------- Empty Host header [Django] ----------------------
+HTTP/1.1 400 Bad Request
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/html; charset=utf-8
+Connection: close
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bad Request (400)</title>
+</head>
+<body>
+  <h1>Bad Request (400)</h1><p></p>
+</body>
+</html>
+
+------------------------------------------------------------------------
+
+------------- Empty Host header with line-folding [Django] -------------
+HTTP/1.1 400 Bad Request
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Server: WSGIServer/0.2 CPython/3.11.3
+Content-Type: text/html; charset=utf-8
+Connection: close
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bad Request (400)</title>
+</head>
+<body>
+  <h1>Bad Request (400)</h1><p></p>
+</body>
+</html>
+
+------------------------------------------------------------------------
+
+------------------------- Normal [Rust hyper] --------------------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 16
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[127.0.0.1:3003]
+------------------------------------------------------------------------
+
+--------------------- No Host header [Rust hyper] ----------------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 11
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[undefined]
+------------------------------------------------------------------------
+
+------------------ Multiple Host headers [Rust hyper] ------------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 11
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[first.com]
+------------------------------------------------------------------------
+
+----------- Space-preceded Host as first header [Rust hyper] -----------
+HTTP/1.1 400 Bad Request
+content-length: 0
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+
+------------------------------------------------------------------------
+
+------ Space-preceded Host header after another Host [Rust hyper] ------
+HTTP/1.1 400 Bad Request
+content-length: 0
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+
+------------------------------------------------------------------------
+
+------ Non-first space-preceded the only Host header [Rust hyper] ------
+HTTP/1.1 400 Bad Request
+content-length: 0
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+
+------------------------------------------------------------------------
+
+-------------- Space-after-colon Host header [Rust hyper] --------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 23
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+--------------- Space-succeeded Host header [Rust hyper] ---------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 21
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[space-succeeded.com]
+------------------------------------------------------------------------
+
+-------------------- Empty Host header [Rust hyper] --------------------
+HTTP/1.1 200 OK
+content-type: text/plain
+connection: close
+content-length: 2
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+[]
+------------------------------------------------------------------------
+
+----------- Empty Host header with line-folding [Rust hyper] -----------
+HTTP/1.1 400 Bad Request
+content-length: 0
+date: Fri, 21 Jul 2023 12:55:18 GMT
+
+
+------------------------------------------------------------------------
+
+----------------------------- Normal [Go] ------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 16
+Content-Type: text/plain; charset=utf-8
+
+[127.0.0.1:3004]
+------------------------------------------------------------------------
+
+------------------------- No Host header [Go] --------------------------
+HTTP/1.1 400 Bad Request: missing required Host header
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request: missing required Host header
+------------------------------------------------------------------------
+
+---------------------- Multiple Host headers [Go] ----------------------
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request
+------------------------------------------------------------------------
+
+--------------- Space-preceded Host as first header [Go] ---------------
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request
+------------------------------------------------------------------------
+
+---------- Space-preceded Host header after another Host [Go] ----------
+HTTP/1.1 400 Bad Request: malformed Host header
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request: malformed Host header
+------------------------------------------------------------------------
+
+---------- Non-first space-preceded the only Host header [Go] ----------
+HTTP/1.1 400 Bad Request: missing required Host header
+Content-Type: text/plain; charset=utf-8
+Connection: close
+
+400 Bad Request: missing required Host header
+------------------------------------------------------------------------
+
+------------------ Space-after-colon Host header [Go] ------------------
+HTTP/1.1 200 OK
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 23
+Content-Type: text/plain; charset=utf-8
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+------------------- Space-succeeded Host header [Go] -------------------
+HTTP/1.1 200 OK
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 21
+Content-Type: text/plain; charset=utf-8
+
+[space-succeeded.com]
+------------------------------------------------------------------------
+
+------------------------ Empty Host header [Go] ------------------------
+HTTP/1.1 200 OK
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 2
+Content-Type: text/plain; charset=utf-8
+
+[]
+------------------------------------------------------------------------
+
+--------------- Empty Host header with line-folding [Go] ---------------
+HTTP/1.1 200 OK
+Connection: close
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 2
+Content-Type: text/plain; charset=utf-8
+
+[]
+------------------------------------------------------------------------
+
+------------------------ Normal [Ruby Sinatra] -------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 11
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=ENS3JN3bGE%2BivMJEhaWy8wd9ztFG19zLsWzFlTCicz%2FdURhbsyErXqB2GyOVwXcJfJzl0SmEjVZ%2B867uRK5Cbv9KKqvd1TntSQLG6%2B%2BaqUUdor50k8gRVeiLGctS025X%2FGQrKs9%2F9k6qCfECv0kh7nrj5U379isjTGVqNiSOS3RRQv7DeQvVkTXXComHvm4PQVbQ8v9KJjZKD4N6s3EMw075r9ENIBD7quLnny4WhSUpT7SuC2MgZDFKhU7DkRIy2OH%2FQaxUWXkW--IxepNkP9GwMl7sRp--kfaOTI2RScAYR1Fk3QpDjQ%3D%3D; path=/; HttpOnly
+
+[127.0.0.1]
+------------------------------------------------------------------------
+
+-------------------- No Host header [Ruby Sinatra] ---------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 11
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=3DtSeYttbyhd4UlZT2YcY%2Fo20vPZjjKliuWu01ZV5JzTVZIj5G6WOX9pZq7F3EkBfPhRfdIpjGnTqRm6yKtiqK%2Bt1KhHKPLZybXuuvPTQjaBc81QV%2BTqSs532B5bIfs4jlGZd%2FLUDc8YrIzCgkf8VZnfr9gK%2FyuPi2dz2%2FDPQyI%2Fem%2B%2Bv%2BcHHxiTeGDs0xHHWH%2Bv%2B5HwFzBoQFz4Rsko9XpNPh%2Frup1Qlp0tIK2p2jyYjcc6ML1T1SzPs2iSci1sdJ50b%2BZwpSdN--0x7s%2B%2Fd7jXFzF36c--PEKYj1bRZpuaB0V9CMuowg%3D%3D; path=/; HttpOnly
+
+[127.0.0.1]
+------------------------------------------------------------------------
+
+----------------- Multiple Host headers [Ruby Sinatra] -----------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 23
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=Kn8Qna4uAvLF%2BXMTaifzQ5gXBNDgs7I8up0BI1Y1WKc2guLqxQXUjVcdhAnaFeIOIsGuTpzzfIBOQAG9TK4LV2x%2FOWd9zb9LJ4LIvHUW161UfoNilGWXx2s%2FEj1s6HnRQcbqOqsYL5P4GIF2OSplPNKJK0wqsb%2FHHDNIX%2BXiDyRQQDbNKusHxt%2FEvdYG1%2B7cV4QkD%2BD06nK3q0FYVuvwHAFV1dm3zCq7dbhqePNpYoB3ZjDxyqbO0vRk13Dt9UKvo84V3GBGJGE8--JAKN1EX2VGs6m6ks--nCWrWRUhTMjMBRWrrzDZFQ%3D%3D; path=/; HttpOnly
+
+[first.com, second.com]
+------------------------------------------------------------------------
+
+---------- Space-preceded Host as first header [Ruby Sinatra] ----------
+HTTP/1.1 400 Bad Request
+Content-Type: text/html; charset=ISO-8859-1
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Content-Length: 310
+Connection: close
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+  <HEAD><TITLE>Bad Request</TITLE></HEAD>
+  <BODY>
+    <H1>Bad Request</H1>
+    bad header ' Host: space-preceded-first.com
+'.
+    <HR>
+    <ADDRESS>
+     WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24) at
+     9aa0bde90460:3005
+    </ADDRESS>
+  </BODY>
+</HTML>
+
+------------------------------------------------------------------------
+
+----- Space-preceded Host header after another Host [Ruby Sinatra] -----
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 50
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=umfU7Gwmz%2B9qVpKWxmw3AmRCKg0AqgACjm6X6kUPYsiQFjI5w%2FDw41GjLVpAKK64J5gKii8SC19BWtyOJHx7yKfkxY6W6Y1wIc2Mx4%2F5nPPinBci5JWFkJjH7LX9j%2Bx215DKXpMJfXNO0Sx2%2FMQbHSzTL2d4UKazrNLIV6lXO1yzL0OM0A6bw181xxTEqvFlRO6JNnnzQ9yQxln31KB%2B2algV%2B92afBnW8jWKtWPspiMQ06JhITwawt%2BxV90VohQ9H0tkIBSAe04--M8BGzHtCjhOMka3p--78vyJbnjB6yTp9NbN9UClA%3D%3D; path=/; HttpOnly
+
+[first.com Host: space-preceded-after-another.com]
+------------------------------------------------------------------------
+
+----- Non-first space-preceded the only Host header [Ruby Sinatra] -----
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 11
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=xoTX0daEtYmiVW2VzhNBtiEWgh46Aq4ZeORKnVinSdJLAS3no222JSOCyj%2FW4ZlThGieBdNTgwJIfBCj56wtJE2MvgXylH7zs6mXoHMcGlLZ0Tf5qZJklOA9m3tp0asicyIVd1AkwLyMiB2qHbg2%2FpVBa2E%2FwLGcgIF%2BHmRA9VGkSsiZsFWHywxs48IMk2Is%2Bw3Hg97%2FULUvD%2FRhreLAym5LTxuDx5EOcvCaAghv%2FRNpGXXr40HQ9iG3jENX05%2BRS56pxWnoBy8U--DRLNPPKYUIdm1lA8--8qwvRK%2Bpod9LqTV1pmZfBQ%3D%3D; path=/; HttpOnly
+
+[127.0.0.1]
+------------------------------------------------------------------------
+
+------------- Space-after-colon Host header [Ruby Sinatra] -------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 23
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=7aD27J6HFGzIMni6X6DAE11XN0oAKCDlk6pFndkvpjFoipk2xbjZwWqOtpLL2UGCrvh8gI8QfLSX9KZoQI%2FPDx6XPc6MRhkEG7vIo0%2B28ce69r1YIEOAtWBpFoFA45LlSrpZBuZVuXzR5EQCyIrq92Vv9dxA3akT7xLwo7q49CO1y9yx2p2LuCh2X1%2BpYfmyJIdXkAyV2z5Y8xl1PY3%2B7fXH9DgClSvENYmWTOmIfxzpg2%2BjVS%2FmXEHOg9T8l4ruTKqSuBjPu7x9--ZYf%2BOWKAf6Iue5DB--cMS%2BfO2z8N%2B1NTmEDUqAHw%3D%3D; path=/; HttpOnly
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+-------------- Space-succeeded Host header [Ruby Sinatra] --------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 21
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=kykpDFlkjrmUNXbEpKFVkFSZ8B5E11u2hTW%2F7SduXebZ03o8Ic%2F82GQ0xg3ugVmgvxNlEBrC9v5%2Fm84jqRATdR9TObvGwp6jQVBwoDShS%2F4mWdg62kdhXwbVOWSRt2tjpnEKDPGsA1ApVYyv6LDgzsmJLu45pipxJ6qBUpGjcBwXB9LxixDvbcbfZZ8jwf88jlazrS%2FkmT%2BEMJbigbfzbI7OYPqAEGUkbQyiZrFLJAdrJ6%2FP%2F%2Fr3dct1catEYxyWkSkoPJ7uP%2BRU--TN4IV0qwbgiqPzXt--EHy1lz22b5Z6zbSSRkeBhw%3D%3D; path=/; HttpOnly
+
+[space-succeeded.com]
+------------------------------------------------------------------------
+
+------------------- Empty Host header [Ruby Sinatra] -------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 2
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=u7oQEht3bF8HugGAVKarvmsvYEpyVAbE1aQxft%2BwjU7FSkppYmE0%2BQMPk74dEkiati7eEg36dpiGFAu92ydl%2BlDKJtdSCzSwfv1YS6SAWPuhN6%2Frij11xLWZ0mFmOWLOdbUvKzsf1t0L%2BhMnIDFPyWlOKb8KBVOtQ0%2FtszhmuuZEKAlGGjoukWpQQBFdg7lV0xKCv5G%2B7xDpzjV%2F616TJGIvNTDlvTJ%2FDzu%2F8PSmqfSvIrjTJOxALNde7JAdfPOH%2FCWfQHQkqkUT--fX%2FaryfvJmvVGHZf--rJ77GAF25M9OWopNKpnd%2Fw%3D%3D; path=/; HttpOnly
+
+[]
+------------------------------------------------------------------------
+
+---------- Empty Host header with line-folding [Ruby Sinatra] ----------
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: text/html;charset=utf-8
+Content-Length: 2
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: WEBrick/1.8.1 (Ruby/3.0.5/2022-11-24)
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Set-Cookie: rack.session=k5PF%2B8ljxzXxfauPjIiBhRYcLhoZNaWkdMx%2BFywQ5w%2FDvRBiXImdgTt3LLTs5OTivUQabvYEWYhL%2FzqzIKaFt7ZCGBzoZEfVXPrBMPTqahPCPUZWb0ffpNLqrDfGT7BCyHTJ0%2BrljR2gcoo17zISmqOycV36MWD79ogNJUsmWQaiRefU68RChCtHXPGpXB3z3WF3E623ir4AJCInU1Onmfzmp9Q2XvhokFG%2BJsoWRp1Nn67TgfBIHCvvY6JUQQwphw0lfFGx886%2F--zilHws4dTbiz5UNe--%2BrmOqP10L2EgJ5KR2JCCOg%3D%3D; path=/; HttpOnly
+
+[]
+------------------------------------------------------------------------
+
+----------------------------- Normal [PHP] -----------------------------
+HTTP/1.1 200 OK
+Host: 127.0.0.1:3006
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[127.0.0.1:3006]
+------------------------------------------------------------------------
+
+------------------------- No Host header [PHP] -------------------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[undefined]
+------------------------------------------------------------------------
+
+--------------------- Multiple Host headers [PHP] ----------------------
+HTTP/1.1 200 OK
+Host: first.com
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[first.com]
+------------------------------------------------------------------------
+
+-------------- Space-preceded Host as first header [PHP] ---------------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[undefined]
+------------------------------------------------------------------------
+
+--------- Space-preceded Host header after another Host [PHP] ----------
+HTTP/1.1 200 OK
+Host: first.com
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[first.com]
+------------------------------------------------------------------------
+
+--------- Non-first space-preceded the only Host header [PHP] ----------
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[undefined]
+------------------------------------------------------------------------
+
+----------------- Space-after-colon Host header [PHP] ------------------
+HTTP/1.1 200 OK
+Host: space-after-colon.com
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[space-after-colon.com]
+------------------------------------------------------------------------
+
+------------------ Space-succeeded Host header [PHP] -------------------
+HTTP/1.1 200 OK
+Host: space-succeeded.com 
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[space-succeeded.com ]
+------------------------------------------------------------------------
+
+----------------------- Empty Host header [PHP] ------------------------
+HTTP/1.1 200 OK
+Host: 
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[]
+------------------------------------------------------------------------
+
+-------------- Empty Host header with line-folding [PHP] ---------------
+HTTP/1.1 200 OK
+Host: 
+Date: Fri, 21 Jul 2023 12:55:18 GMT
+Connection: close
+X-Powered-By: PHP/8.2.8
+Content-type: text/plain;charset=UTF-8
+
+[]
+------------------------------------------------------------------------
+

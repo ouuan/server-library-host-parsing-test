@@ -1,0 +1,6 @@
+services:
+  test-servers:
+    build:
+      context: .
+    volumes:
+      - ./results:/results
